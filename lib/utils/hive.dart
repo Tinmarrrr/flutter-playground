@@ -1,5 +1,3 @@
-// utils.dart
-// ignore_for_file: avoid_print
 import 'package:hive/hive.dart';
 
 class AppUtils {
@@ -20,6 +18,7 @@ class AppUtils {
 
   static Future<String> getFavoriteSparklingWater(String profileName) async {
     final box = await Hive.openBox('Users');
+    print(box.get(profileName));
     return box.get(profileName);
   }
 }

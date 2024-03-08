@@ -8,12 +8,12 @@ class AppButton extends StatelessWidget {
   final String? description;
 
   const AppButton({
-    Key? key,
+    super.key,
     this.image,
     this.description,
     required this.title,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class AppButton extends StatelessWidget {
                   style: const TextStyle(
                     color: AppColors.primary,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
                 if (description != null &&
@@ -69,9 +69,9 @@ class AppButton extends StatelessWidget {
                   Text(
                     description!,
                     style: const TextStyle(
-                      color: AppColors.accent,
+                      color: AppColors.primaryLight,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 15,
                     ),
                   )
                 else

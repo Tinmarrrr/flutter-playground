@@ -1,12 +1,10 @@
-// ignore_for_file: avoid_print, library_private_types_in_public_api
-
 import 'package:app/components/subtitle.dart';
-import 'package:app/pages/profile.dart';
 import 'package:app/utils/bored.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/hive.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../components/app_button.dart';
 import 'package:app/utils/toast.dart';
 
@@ -14,10 +12,10 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   TextEditingController nameController = TextEditingController();
 
   void showActivity() async {
@@ -37,12 +35,7 @@ class _HomePageState extends State<HomePage> {
 
     String result = await AppUtils.welcomeMessage(nameController.text);
     Toast().showToast(result);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Profile(profileName: nameController.text),
-      ),
-    );
+    context.go('profile', extra: 'profileName=${nameController.text}');
   }
 
   @override
